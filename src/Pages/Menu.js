@@ -73,7 +73,7 @@ function Menu() {
                             <div className='fixed-bottom pb-3'>
                                 
                     <Pagination
-                totalPosts={products.length}
+                totalPosts={products?.length}
                 postsPerPage={postsPerPage}
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}

@@ -121,7 +121,7 @@ function Profile() {
                         </div>
                         <div className='d-flex align-items-center'>
                         <Pagination
-                totalPosts={products.length}
+                totalPosts={products?.length}
                 postsPerPage={postsPerPage}
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}
