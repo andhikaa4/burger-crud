@@ -19,8 +19,9 @@ function AddProduct(props) {
 
     const [product, setProduct] = useState({
         name: "",
-        price: 0,
-        stock: 0,
+        price: '',
+        stock: '',
+        buyPrice:'',
       });
 
       const [image, setImage] = useState ('')
@@ -58,6 +59,7 @@ function AddProduct(props) {
               name : product.name,
               stock: parseInt(product.stock),
               price: parseInt(product.price),
+              buyPrice: parseInt(product.buyPrice),
               image: [{ fileName: image.fileName, url: image.url}]
             }  
             const res = await API.post("/Product", data);
@@ -67,7 +69,8 @@ function AddProduct(props) {
               setProduct({
                 name:'',
                 price:'',
-                stock:''
+                stock:'',
+                buyPrice:'',
               })
               setImage(null)
               setPreview(null)
@@ -107,6 +110,7 @@ function AddProduct(props) {
                             <input className='form-control mb-3 border border-dark' onChange={handleChange} name='name' value={product.name} placeholder='Product Name' style={{ backgroundColor: "rgba(97, 61, 43, 0.25)" }} type="text" />
                             <input className='form-control mb-3 border border-dark' onChange={handleChange} name='stock' value={product.stock} placeholder='Stock' style={{ backgroundColor: "rgba(97, 61, 43, 0.25)" }} type="number" />
                             <input className='form-control mb-3 border border-dark' onChange={handleChange} name='price' value={product.price} placeholder='Price' style={{ backgroundColor: "rgba(97, 61, 43, 0.25)" }} type="number" />
+                            <input className='form-control mb-3 border border-dark' onChange={handleChange} name='buyPrice' value={product.buyPrice} placeholder='Buy Price' style={{ backgroundColor: "rgba(97, 61, 43, 0.25)" }} type="number" />
 
                             {preview && (
                                 <div>

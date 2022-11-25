@@ -19,8 +19,9 @@ function EditProduct(props) {
 
     const [product, setProduct] = useState({
         name: "",
-        price: 0,
-        stock: 0,
+        price: '',
+        stock: '',
+        buyPrice:'',
       });
 
       useEffect(() => {
@@ -31,6 +32,7 @@ function EditProduct(props) {
             name: props?.id?.name,
             price: props?.id?.price,
             stock: props?.id?.stock,
+            buyPrice:props?.id?.buyPrice,
           });
         }},[props.id])
 
@@ -67,6 +69,7 @@ function EditProduct(props) {
                 name : product.name,
                 stock: parseInt(product.stock),
                 price: parseInt(product.price),
+                buyPrice:parseInt(product.buyPrice),
                 image: [{ fileName: image.fileName, url: image.url}]
               }
               if(image.size <= 100000){
@@ -85,6 +88,7 @@ function EditProduct(props) {
                 name : product.name,
                 stock: parseInt(product.stock),
                 price: parseInt(product.price),
+                buyPrice:parseInt(product.buyPrice),
                 image: [{ fileName: props?.id?.image[0].fileName, url: props?.id?.image[0].url}]
               }
               const res = await API.patch("/Product/" + props?.id?._id, data);
@@ -122,6 +126,7 @@ function EditProduct(props) {
                             <input className='form-control mb-3 border border-dark' onChange={handleChange} name='name' value={product.name} placeholder='Product Name' style={{ backgroundColor: "rgba(97, 61, 43, 0.25)" }} type="text" />
                             <input className='form-control mb-3 border border-dark' onChange={handleChange} name='stock' value={product.stock} placeholder='Stock' style={{ backgroundColor: "rgba(97, 61, 43, 0.25)" }} type="number" />
                             <input className='form-control mb-3 border border-dark' onChange={handleChange} name='price' value={product.price} placeholder='Price' style={{ backgroundColor: "rgba(97, 61, 43, 0.25)" }} type="number" />
+                            <input className='form-control mb-3 border border-dark' onChange={handleChange} name='buyPrice' value={product.buyPrice} placeholder='Buy Price' style={{ backgroundColor: "rgba(97, 61, 43, 0.25)" }} type="number" />
 
                             {preview && (
                                 <div>

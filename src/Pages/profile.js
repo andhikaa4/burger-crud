@@ -78,6 +78,9 @@ function Profile() {
                                             Price
                                         </th>
                                         <th className='border border-1 border-dark ps-1'>
+                                            Buy Price
+                                        </th>
+                                        <th className='border border-1 border-dark ps-1'>
                                             Action
                                         </th>
 
@@ -101,6 +104,9 @@ function Profile() {
                                                 </td>
                                                 <td className='border border-1 border-dark ps-1'>
                                                     {item.price}
+                                                </td>
+                                                <td className='border border-1 border-dark ps-1'>
+                                                    {item.buyPrice}
                                                 </td>
                                                 <td className='border border-1 border-dark p-1 '>
                                                     <div className=' w-100 d-flex'>
