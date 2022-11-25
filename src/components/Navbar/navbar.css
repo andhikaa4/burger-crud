@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+.font-family {
+    font-family: 'Alfa Slab One', cursive;;
+    text-shadow: 1px 2px 3px #eee, 0 0 0 #000, 1px 2px 3px #eee;
+}

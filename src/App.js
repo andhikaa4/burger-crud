@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useContext} from 'react'
+import { UserContext } from './components/context/userContext';
+import Navbar from './components/Navbar/Navbar'
+import { API, setAuthToken } from './config/api';
 
 function App() {
+  const [state, dispatch] = useContext(UserContext)
+
+  useEffect(() => {
+
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+}, [state]);
+
+const checkUser = async () => {
+  try {
+    const response = await API.post('/auth/verify-token');
+    let payload = response.data;
+    payload.token = localStorage.token;
+    console.log(response);
+
+    dispatch({
+      type: 'USER_SUCCESS',
+      payload,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+useEffect(() => {
+  checkUser();
+}, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+         <Navbar/>
     </div>
   );
 }
