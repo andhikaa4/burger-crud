@@ -24,10 +24,8 @@ function AddProduct(props) {
       });
 
       const [image, setImage] = useState ('')
-      console.log(image);
 
       const filter = products?.filter(p=> p.name === product?.name)
-      console.log("ini filter",filter);
     
     const handleChange = (e) => {
         setProduct({
@@ -54,6 +52,7 @@ function AddProduct(props) {
           e.preventDefault();
             
           if(image.size <= 100000){
+  
             if(filter.length === 0){
             const data = {
               name : product.name,
@@ -65,21 +64,25 @@ function AddProduct(props) {
 
             if(res){
               props.refetch()
-              
-
+              setProduct({
+                name:'',
+                price:'',
+                stock:''
+              })
+              setImage(null)
+              setPreview(null)
                 props.handleClose()
+              
             }
            
-          } else {
+          }  else {
             const alert = (
               <Alert variant="success">Nama Tidak Boleh sama</Alert>
             );
             setMessage(alert);
-          } 
-        
-           } else {
+          }} else {
             const alert = (
-              <Alert variant="success">Ukuran Gambar tidak boleh lebih dari 100kb</Alert>
+              <Alert variant="success">Gambar Kosong atau Ukuran Gambar tidak boleh lebih dari 100kb</Alert>
             );
             setMessage(alert);
            }
@@ -121,7 +124,7 @@ function AddProduct(props) {
                             )}
 
                             <div className="input-group mb-3">
-                                <input type="file" name='image' onChange={handleImage} className="form-control" id="inputGroupFile02" />
+                                <input type="file" name='image' onChange={handleImage} className="form-control" id="inputGroupFile02" accept="image/png, image/jpeg" />
                                 <label style={{ cursor: "pointer", backgroundColor: "rgba(97, 61, 43, 0.25)" }} className="input-group-text" htmlFor="inputGroupFile02">Upload</label>
                             </div>
                         </Form.Group>

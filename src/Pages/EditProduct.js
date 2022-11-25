@@ -139,7 +139,7 @@ function EditProduct(props) {
                             )}
 
                             <div className="input-group mb-3">
-                                <input type="file" name='image' onChange={handleImage} className="form-control" id="inputGroupFile02" />
+                                <input type="file" name='image' onChange={handleImage} className="form-control" id="inputGroupFile02" accept="image/png, image/jpeg"/>
                                 <label style={{ cursor: "pointer", backgroundColor: "rgba(97, 61, 43, 0.25)" }} className="input-group-text" htmlFor="inputGroupFile02">Upload</label>
                             </div>
                         </Form.Group>
